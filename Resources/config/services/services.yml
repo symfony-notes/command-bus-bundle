@@ -1,0 +1,5 @@
+services:
+    notes.command_bus:
+        class: SymfonyNotes\CommandBusBundle\CommandBus
+        arguments:
+            - "@service_container"

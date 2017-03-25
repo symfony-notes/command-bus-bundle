@@ -1,0 +1,35 @@
+{
+  "name": "symfony-notes/command-bus-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony Command Bus Bundle",
+  "keywords": ["symfony", "bundle", "command bus"],
+  "homepage": "https://github.com/symfony-notes/command-bus-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Roman Zhuravel",
+      "email": "zhooravell@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SymfonyNotes\\CommandBusBundle\\": ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "require": {
+    "php": ">=7.0.11",
+    "symfony/framework-bundle": "~3.0",
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.7.15",
+    "phpunit/php-code-coverage": "^4.0.4"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  }
+}
