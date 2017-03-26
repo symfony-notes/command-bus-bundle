@@ -1,6 +1,6 @@
 <?php
 
-namespace SymfonyNotes\CommandBusBundle;
+namespace SymfonyNotes\CommandBusBundle\Middleware;
 
 use SymfonyNotes\CommandBusBundle\Command\CommandInterface;
 

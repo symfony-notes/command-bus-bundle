@@ -6,6 +6,7 @@ namespace SymfonyNotes\CommandBusBundle;
 
 use SymfonyNotes\CommandBusBundle\Command\CommandInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use SymfonyNotes\CommandBusBundle\Middleware\MiddlewareRunner;
 use SymfonyNotes\CommandBusBundle\Command\CommandHandlerInterface;
 use SymfonyNotes\CommandBusBundle\Exception\MissingHandlerException;
 

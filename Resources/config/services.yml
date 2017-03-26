@@ -3,3 +3,24 @@ services:
         class: SymfonyNotes\CommandBusBundle\CommandBus
         arguments:
             - "@service_container"
+
+    param_converter.json_to_command:
+        class: SymfonyNotes\CommandBusBundle\ParamConverter\CommandParamConverter
+        arguments:
+            - '@factory.command'
+            - '@validator'
+        tags:
+            - { name: request.param_converter, converter: command_json_converter }
+
+    param_converter.file_to_command:
+        class: SymfonyNotes\CommandBusBundle\ParamConverter\FileCommandParamConverter
+        arguments:
+            - '@factory.command'
+            - '@validator'
+        tags:
+            - { name: request.param_converter, converter: command_file_converter }
+
+    factory.command:
+        class: SymfonyNotes\CommandBusBundle\ParamConverter\Factory\CommandFactory
+        arguments:
+            - '@serializer'
