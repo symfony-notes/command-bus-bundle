@@ -20,18 +20,28 @@ class CommandBus implements CommandBusInterface
     private $commandToHandlerMaps;
 
     /**
+     * @var array
+     */
+    private $middlewareToHandlerMaps;
+
+    /**
      * @var ContainerInterface
      */
     private $container;
 
     /**
      * @param ContainerInterface $container
-     * @param array $commandToHandlerMaps
+     * @param array              $commandToHandlerMaps
+     * @param array              $middlewareToHandlerMaps
      */
-    public function __construct(ContainerInterface $container, array $commandToHandlerMaps)
-    {
+    public function __construct(
+        ContainerInterface $container,
+        array $commandToHandlerMaps = [],
+        array $middlewareToHandlerMaps = []
+    ) {
         $this->container = $container;
         $this->commandToHandlerMaps = $commandToHandlerMaps;
+        $this->middlewareToHandlerMaps = $middlewareToHandlerMaps;
     }
 
     /**
@@ -45,8 +55,14 @@ class CommandBus implements CommandBusInterface
             throw new MissingHandlerException($class);
         }
 
+        $handlerId = $this->commandToHandlerMaps[$class];
         /** @var CommandHandlerInterface $handler */
-        $handler = $this->container->get($this->commandToHandlerMaps[$class]);
+        $handler = $this->container->get($handlerId);
+
+        if (array_key_exists($handlerId, $this->middlewareToHandlerMaps)) {
+            $middlewareRunner = new MiddlewareRunner($this->middlewareToHandlerMaps[$handlerId]);
+            $middlewareRunner->run($command);
+        }
 
         return $handler->handle($command);
     }
