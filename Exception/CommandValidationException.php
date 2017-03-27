@@ -21,7 +21,7 @@ class CommandValidationException extends \RuntimeException
      * @param ConstraintViolationListInterface $violationList
      * @param string                           $message
      */
-    public function __construct(ConstraintViolationListInterface $violationList, $message = 'Command validation fail.')
+    public function __construct(ConstraintViolationListInterface $violationList, $message = 'Validation failed.')
     {
         parent::__construct($message);
 
