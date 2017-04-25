@@ -1,7 +1,7 @@
 # Symfony Command Bus Bundle
 This bundle will help you to use `Command Query Responsibility Segregation`
 
-Please see [CQRS](cqrs-link)
+Please see [CQRS][cqrs-link]
 
 
 [![License][license-image]][license-link]
